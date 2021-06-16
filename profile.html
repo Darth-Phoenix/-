@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darth Phoenix's Website</title>
+    <style>
+        textarea {
+          resize: none;
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"> 
+</head>
+<body>
+    <nav class="nav nav-pills justify-content-end p-2" style="background-color: rgb(87, 87, 83)">
+        <a class="nav-link active" aria-current="page" href="/logout" role="button" style="background-color: #0d6efd;">Logout</a>
+    </nav>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card" style="width:80%; padding:5% 15%; border:none">
+                <form action="" method="post">
+                    <h1 class="h2 fw-normal"><b>Login Successful</b></h1><br>
+                    <p>{{info.name}}, welcome to this website!</p>
+                    <p>Feel free to leave a comment:</p>
+                    <div class="form-group">
+                        <textarea name="comment" class="form-control" placeholder="Enter your comment here" style ="width: 150%" rows=5></textarea>
+                    </div><br>
+                    <button type="submit" class="w-10 btn btn-lg btn-primary">Post</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card" style="width: 80%; padding-top: 5%; border:none">
+                <h1 class="h2 fw-normal"><b>Comment Section</b></h1><br>
+                {% for item in data %}
+                <div class="card-header">
+                    <span>
+                        <label><b>{{item.username}}</b></label><br>       
+                        <label style="text-align: right; font-size:14px">{{item.time}}</label>       
+                    </span>    
+                </div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p style="font-size:16px">- {{item.comment}}</p>
+                    </blockquote>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <script src="../static/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+</body>
+</html>
